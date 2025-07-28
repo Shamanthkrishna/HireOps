@@ -1,0 +1,44 @@
+2025-07-28 11:57:39,467 - main - INFO - Google OAuth credentials loaded successfully
+2025-07-28 11:57:47,763 - main - INFO - Google OAuth credentials loaded successfully
+2025-07-28 11:57:47,763 - main - INFO - OAuth client registered successfully
+2025-07-28 11:57:53,072 - main - INFO - Google OAuth credentials loaded successfully
+2025-07-28 11:57:53,073 - main - INFO - OAuth client registered successfully
+2025-07-28 11:57:58,738 - main - INFO - Google OAuth credentials loaded successfully
+2025-07-28 11:57:58,739 - main - INFO - OAuth client registered successfully
+2025-07-28 11:58:11,761 - main - INFO - Google OAuth credentials loaded successfully
+2025-07-28 11:58:11,762 - main - INFO - OAuth client registered successfully
+2025-07-28 11:58:26,821 - main - INFO - Google OAuth credentials loaded successfully
+2025-07-28 11:58:26,821 - main - INFO - OAuth client registered successfully
+2025-07-28 11:58:33,582 - main - INFO - Google OAuth credentials loaded successfully
+2025-07-28 11:58:33,582 - main - INFO - OAuth client registered successfully
+2025-07-28 11:58:33,583 - main - INFO - === HireOps Application Starting ===
+2025-07-28 11:58:33,584 - main - INFO - Application started at 2025-07-28 11:58:33.584064
+2025-07-28 11:58:33,584 - main - INFO - FastAPI server is ready to handle requests
+2025-07-28 11:59:21,445 - main - INFO - === HireOps Application Shutting Down ===
+2025-07-28 11:59:21,446 - main - INFO - Application stopped at 2025-07-28 11:59:21.446054
+2025-07-28 12:02:35,089 - main - INFO - Google OAuth credentials loaded successfully
+2025-07-28 12:02:35,090 - main - INFO - OAuth client registered successfully
+2025-07-28 12:02:35,091 - main - INFO - === HireOps Application Starting ===
+2025-07-28 12:02:35,091 - main - INFO - Application started at 2025-07-28 12:02:35.091580
+2025-07-28 12:02:35,091 - main - INFO - FastAPI server is ready to handle requests
+2025-07-28 12:02:38,788 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
+2025-07-28 12:02:44,221 - main - INFO - [ANONYMOUS] Google OAuth login initiated from IP: 127.0.0.1 - Redirect URI: http://127.0.0.1:8000/auth
+2025-07-28 12:02:44,652 - httpx - INFO - HTTP Request: GET https://accounts.google.com/.well-known/openid-configuration "HTTP/1.1 200 OK"
+2025-07-28 12:02:48,648 - main - INFO - [AUTH_PROCESS] Google OAuth callback received from IP: 127.0.0.1
+2025-07-28 12:02:49,086 - httpx - INFO - HTTP Request: POST https://oauth2.googleapis.com/token "HTTP/1.1 200 OK"
+2025-07-28 12:02:49,348 - httpx - INFO - HTTP Request: GET https://www.googleapis.com/oauth2/v3/certs "HTTP/1.1 200 OK"
+2025-07-28 12:02:49,358 - main - INFO - [AUTH_PROCESS] Access token successfully received from Google
+2025-07-28 12:02:49,358 - main - INFO - [USER: shamanthkrishna0@gmail.com] Authentication successful - Name: Shamanth Krishna - ID: 104510563051296659434 - IP: 127.0.0.1
+2025-07-28 12:02:49,359 - main - INFO - [USER: shamanthkrishna0@gmail.com] User details - Given Name: Shamanth - Family Name: Krishna - Email Verified: True
+2025-07-28 12:02:49,359 - main - INFO - [USER: shamanthkrishna0@gmail.com] Dashboard accessed from IP: 127.0.0.1
+2025-07-28 12:03:18,192 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
+2025-07-28 12:03:25,684 - main - INFO - [ANONYMOUS] Google OAuth login initiated from IP: 127.0.0.1 - Redirect URI: http://127.0.0.1:8000/auth
+2025-07-28 12:03:28,303 - main - INFO - [AUTH_PROCESS] Google OAuth callback received from IP: 127.0.0.1
+2025-07-28 12:03:28,704 - httpx - INFO - HTTP Request: POST https://oauth2.googleapis.com/token "HTTP/1.1 200 OK"
+2025-07-28 12:03:28,706 - main - INFO - [AUTH_PROCESS] Access token successfully received from Google
+2025-07-28 12:03:28,706 - main - INFO - [USER: inboxofskb@gmail.com] Authentication successful - Name: Shamanth K B - ID: 111052368321181426120 - IP: 127.0.0.1
+2025-07-28 12:03:28,707 - main - INFO - [USER: inboxofskb@gmail.com] User details - Given Name: Shamanth - Family Name: K B - Email Verified: True
+2025-07-28 12:03:28,707 - main - INFO - [USER: inboxofskb@gmail.com] Dashboard accessed from IP: 127.0.0.1
+2025-07-28 12:03:33,342 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
+2025-07-28 12:03:47,200 - main - INFO - === HireOps Application Shutting Down ===
+2025-07-28 12:03:47,200 - main - INFO - Application stopped at 2025-07-28 12:03:47.200789

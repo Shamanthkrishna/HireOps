@@ -113,3 +113,32 @@
 2025-07-28 14:00:16,810 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
 2025-07-28 14:01:35,280 - main - INFO - === HireOps Application Shutting Down ===
 2025-07-28 14:01:35,281 - main - INFO - Application stopped at 2025-07-28 14:01:35.281000
+2025-07-28 14:02:17,863 - main - INFO - OAuth client registered successfully
+2025-07-28 14:02:17,864 - main - INFO - === HireOps Application Starting ===
+2025-07-28 14:02:17,864 - main - INFO - Application started at 2025-07-28 14:02:17.864727
+2025-07-28 14:02:17,864 - main - INFO - FastAPI server is ready to handle requests
+2025-07-28 14:02:19,518 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
+2025-07-28 14:02:30,132 - main - INFO - [ANONYMOUS] Google OAuth login initiated from IP: 127.0.0.1 - Redirect URI: http://127.0.0.1:8000/auth
+2025-07-28 14:02:33,378 - main - INFO - [AUTH_PROCESS] Google OAuth callback received from IP: 127.0.0.1
+2025-07-28 14:02:33,908 - httpx - INFO - HTTP Request: POST https://oauth2.googleapis.com/token "HTTP/1.1 200 OK"
+2025-07-28 14:02:33,914 - main - INFO - [AUTH_PROCESS] Access token successfully received from Google
+2025-07-28 14:02:33,915 - main - INFO - [USER: shamanthkrishna0@gmail.com] Authentication successful - Name: Shamanth Krishna - ID: 104510563051296659434 - IP: 127.0.0.1
+2025-07-28 14:02:33,915 - main - INFO - [USER: shamanthkrishna0@gmail.com] User details - Given Name: Shamanth - Family Name: Krishna - Email Verified: True
+2025-07-28 14:02:33,916 - main - INFO - [USER: shamanthkrishna0@gmail.com] Dashboard accessed from IP: 127.0.0.1
+2025-07-28 14:02:52,334 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
+2025-07-28 14:04:15,917 - main - INFO - === HireOps Application Shutting Down ===
+2025-07-28 14:04:15,918 - main - INFO - Application stopped at 2025-07-28 14:04:15.918063
+2025-07-28 14:04:18,281 - main - INFO - OAuth client registered successfully
+2025-07-28 14:04:18,282 - main - INFO - === HireOps Application Starting ===
+2025-07-28 14:04:18,282 - main - INFO - Application started at 2025-07-28 14:04:18.282580
+2025-07-28 14:04:18,282 - main - INFO - FastAPI server is ready to handle requests
+2025-07-28 14:04:21,127 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
+2025-07-28 14:05:19,794 - main - INFO - === HireOps Application Shutting Down ===
+2025-07-28 14:05:19,794 - main - INFO - Application stopped at 2025-07-28 14:05:19.794691
+2025-07-28 15:22:14,453 - main - INFO - OAuth client registered successfully
+2025-07-28 15:22:14,456 - main - INFO - === HireOps Application Starting ===
+2025-07-28 15:22:14,456 - main - INFO - Application started at 2025-07-28 15:22:14.456639
+2025-07-28 15:22:14,456 - main - INFO - FastAPI server is ready to handle requests
+2025-07-28 15:22:15,945 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
+2025-07-28 15:22:27,288 - main - INFO - === HireOps Application Shutting Down ===
+2025-07-28 15:22:27,288 - main - INFO - Application stopped at 2025-07-28 15:22:27.288842

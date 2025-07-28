@@ -42,3 +42,29 @@
 2025-07-28 12:03:33,342 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
 2025-07-28 12:03:47,200 - main - INFO - === HireOps Application Shutting Down ===
 2025-07-28 12:03:47,200 - main - INFO - Application stopped at 2025-07-28 12:03:47.200789
+2025-07-28 12:36:09,114 - main - INFO - Google OAuth credentials loaded successfully
+2025-07-28 12:36:09,115 - main - INFO - OAuth client registered successfully
+2025-07-28 12:36:09,116 - main - INFO - === HireOps Application Starting ===
+2025-07-28 12:36:09,116 - main - INFO - Application started at 2025-07-28 12:36:09.116394
+2025-07-28 12:36:09,116 - main - INFO - FastAPI server is ready to handle requests
+2025-07-28 12:36:10,805 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
+2025-07-28 12:38:04,606 - main - INFO - === HireOps Application Shutting Down ===
+2025-07-28 12:38:04,607 - main - INFO - Application stopped at 2025-07-28 12:38:04.607472
+2025-07-28 12:38:06,619 - main - INFO - Google OAuth credentials loaded successfully
+2025-07-28 12:38:06,620 - main - INFO - OAuth client registered successfully
+2025-07-28 12:38:06,620 - main - INFO - === HireOps Application Starting ===
+2025-07-28 12:38:06,621 - main - INFO - Application started at 2025-07-28 12:38:06.621059
+2025-07-28 12:38:06,621 - main - INFO - FastAPI server is ready to handle requests
+2025-07-28 12:38:08,598 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
+2025-07-28 12:38:20,808 - main - INFO - [ANONYMOUS] Google OAuth login initiated from IP: 127.0.0.1 - Redirect URI: http://127.0.0.1:8000/auth
+2025-07-28 12:38:21,646 - httpx - INFO - HTTP Request: GET https://accounts.google.com/.well-known/openid-configuration "HTTP/1.1 200 OK"
+2025-07-28 12:38:25,384 - main - INFO - [AUTH_PROCESS] Google OAuth callback received from IP: 127.0.0.1
+2025-07-28 12:38:26,028 - httpx - INFO - HTTP Request: POST https://oauth2.googleapis.com/token "HTTP/1.1 200 OK"
+2025-07-28 12:38:26,438 - httpx - INFO - HTTP Request: GET https://www.googleapis.com/oauth2/v3/certs "HTTP/1.1 200 OK"
+2025-07-28 12:38:26,520 - main - INFO - [AUTH_PROCESS] Access token successfully received from Google
+2025-07-28 12:38:26,521 - main - INFO - [USER: shamanthkrishna0@gmail.com] Authentication successful - Name: Shamanth Krishna - ID: 104510563051296659434 - IP: 127.0.0.1
+2025-07-28 12:38:26,521 - main - INFO - [USER: shamanthkrishna0@gmail.com] User details - Given Name: Shamanth - Family Name: Krishna - Email Verified: True
+2025-07-28 12:38:26,521 - main - INFO - [USER: shamanthkrishna0@gmail.com] Dashboard accessed from IP: 127.0.0.1
+2025-07-28 12:38:38,571 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
+2025-07-28 12:38:46,572 - main - INFO - === HireOps Application Shutting Down ===
+2025-07-28 12:38:46,573 - main - INFO - Application stopped at 2025-07-28 12:38:46.573063

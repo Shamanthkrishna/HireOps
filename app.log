@@ -142,3 +142,10 @@
 2025-07-28 15:22:15,945 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
 2025-07-28 15:22:27,288 - main - INFO - === HireOps Application Shutting Down ===
 2025-07-28 15:22:27,288 - main - INFO - Application stopped at 2025-07-28 15:22:27.288842
+2025-07-28 15:46:51,653 - main - INFO - OAuth client registered successfully
+2025-07-28 15:46:51,654 - main - INFO - === HireOps Application Starting ===
+2025-07-28 15:46:51,654 - main - INFO - Application started at 2025-07-28 15:46:51.654857
+2025-07-28 15:46:51,654 - main - INFO - FastAPI server is ready to handle requests
+2025-07-28 15:46:55,363 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
+2025-07-28 15:48:59,318 - main - INFO - === HireOps Application Shutting Down ===
+2025-07-28 15:48:59,319 - main - INFO - Application stopped at 2025-07-28 15:48:59.319463

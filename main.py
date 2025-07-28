@@ -7,6 +7,8 @@ import os
 import json
 import logging
 from datetime import datetime
+from dotenv import load_dotenv
+load_dotenv()
 
 # Configure logging
 logging.basicConfig(
@@ -51,25 +53,8 @@ async def home(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
 
 
-# Path to your credentials file
-CREDENTIALS_FILE = os.path.join(os.path.dirname(__file__), "client_secret.json")
-
-try:
-    with open(CREDENTIALS_FILE, "r") as f:
-        creds = json.load(f)["web"]  # or ["installed"] if you chose "Desktop app" type
-    
-    GOOGLE_CLIENT_ID = creds["client_id"]
-    GOOGLE_CLIENT_SECRET = creds["client_secret"]
-    logger.info("Google OAuth credentials loaded successfully")
-except FileNotFoundError:
-    logger.error(f"Credentials file not found: {CREDENTIALS_FILE}")
-    raise
-except KeyError as e:
-    logger.error(f"Missing key in credentials file: {e}")
-    raise
-except Exception as e:
-    logger.error(f"Error loading credentials: {e}")
-    raise
+GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
+GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
 
 from authlib.integrations.starlette_client import OAuth
 

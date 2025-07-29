@@ -149,3 +149,10 @@
 2025-07-28 15:46:55,363 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
 2025-07-28 15:48:59,318 - main - INFO - === HireOps Application Shutting Down ===
 2025-07-28 15:48:59,319 - main - INFO - Application stopped at 2025-07-28 15:48:59.319463
+2025-07-29 23:53:25,750 - main - INFO - OAuth client registered successfully
+2025-07-29 23:53:25,752 - main - INFO - === HireOps Application Starting ===
+2025-07-29 23:53:25,752 - main - INFO - Application started at 2025-07-29 23:53:25.752438
+2025-07-29 23:53:25,752 - main - INFO - FastAPI server is ready to handle requests
+2025-07-29 23:53:30,760 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
+2025-07-29 23:53:41,952 - main - INFO - [ANONYMOUS] Google OAuth login initiated from IP: 127.0.0.1 - Redirect URI: http://127.0.0.1:8000/auth
+2025-07-29 23:53:43,386 - httpx - INFO - HTTP Request: GET https://accounts.google.com/.well-known/openid-configuration "HTTP/1.1 200 OK"

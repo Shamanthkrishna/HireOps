@@ -156,3 +156,20 @@
 2025-07-29 23:53:30,760 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
 2025-07-29 23:53:41,952 - main - INFO - [ANONYMOUS] Google OAuth login initiated from IP: 127.0.0.1 - Redirect URI: http://127.0.0.1:8000/auth
 2025-07-29 23:53:43,386 - httpx - INFO - HTTP Request: GET https://accounts.google.com/.well-known/openid-configuration "HTTP/1.1 200 OK"
+2025-07-29 23:57:47,454 - main - INFO - === HireOps Application Shutting Down ===
+2025-07-29 23:57:47,454 - main - INFO - Application stopped at 2025-07-29 23:57:47.454996
+2025-07-29 23:57:52,582 - main - INFO - OAuth client registered successfully
+2025-07-29 23:57:52,589 - main - INFO - === HireOps Application Starting ===
+2025-07-29 23:57:52,589 - main - INFO - Application started at 2025-07-29 23:57:52.589919
+2025-07-29 23:57:52,589 - main - INFO - FastAPI server is ready to handle requests
+2025-07-29 23:57:54,719 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
+2025-07-29 23:57:58,875 - main - INFO - [ANONYMOUS] Google OAuth login initiated from IP: 127.0.0.1 - Redirect URI: http://127.0.0.1:8000/auth
+2025-07-29 23:58:00,861 - httpx - INFO - HTTP Request: GET https://accounts.google.com/.well-known/openid-configuration "HTTP/1.1 200 OK"
+2025-07-29 23:58:04,887 - main - INFO - [AUTH_PROCESS] Google OAuth callback received from IP: 127.0.0.1
+2025-07-29 23:58:05,255 - httpx - INFO - HTTP Request: POST https://oauth2.googleapis.com/token "HTTP/1.1 200 OK"
+2025-07-29 23:58:05,423 - httpx - INFO - HTTP Request: GET https://www.googleapis.com/oauth2/v3/certs "HTTP/1.1 200 OK"
+2025-07-29 23:58:05,477 - main - INFO - [AUTH_PROCESS] Access token successfully received from Google
+2025-07-29 23:58:05,478 - main - INFO - [USER: shamanthkrishna0@gmail.com] Authentication successful - Name: Shamanth Krishna - ID: 104510563051296659434 - IP: 127.0.0.1
+2025-07-29 23:58:05,478 - main - INFO - [USER: shamanthkrishna0@gmail.com] User details - Given Name: Shamanth - Family Name: Krishna - Email Verified: True
+2025-07-29 23:58:05,479 - main - INFO - [USER: shamanthkrishna0@gmail.com] Dashboard accessed from IP: 127.0.0.1
+2025-07-29 23:58:12,273 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1

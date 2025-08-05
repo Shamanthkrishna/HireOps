@@ -5,3 +5,4 @@ authlib
 python-multipart
 httpx
 dotenv
+supabase

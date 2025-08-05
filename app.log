@@ -149,3 +149,44 @@
 2025-07-28 15:46:55,363 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
 2025-07-28 15:48:59,318 - main - INFO - === HireOps Application Shutting Down ===
 2025-07-28 15:48:59,319 - main - INFO - Application stopped at 2025-07-28 15:48:59.319463
+2025-07-30 12:54:30,330 - main - INFO - OAuth client registered successfully
+2025-07-30 12:54:30,333 - main - INFO - === HireOps Application Starting ===
+2025-07-30 12:54:30,333 - main - INFO - Application started at 2025-07-30 12:54:30.333469
+2025-07-30 12:54:30,333 - main - INFO - FastAPI server is ready to handle requests
+2025-07-30 12:54:30,612 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
+2025-07-30 12:54:42,053 - main - INFO - [ANONYMOUS] Google OAuth login initiated from IP: 127.0.0.1 - Redirect URI: http://127.0.0.1:8000/auth
+2025-07-30 12:54:42,834 - httpx - INFO - HTTP Request: GET https://accounts.google.com/.well-known/openid-configuration "HTTP/1.1 200 OK"
+2025-07-30 12:54:50,796 - main - INFO - [AUTH_PROCESS] Google OAuth callback received from IP: 127.0.0.1
+2025-07-30 12:54:51,356 - httpx - INFO - HTTP Request: POST https://oauth2.googleapis.com/token "HTTP/1.1 200 OK"
+2025-07-30 12:54:51,898 - httpx - INFO - HTTP Request: GET https://www.googleapis.com/oauth2/v3/certs "HTTP/1.1 200 OK"
+2025-07-30 12:54:51,964 - main - INFO - [AUTH_PROCESS] Access token successfully received from Google
+2025-07-30 12:54:51,964 - main - INFO - [USER: shamanth.krishna@tismotech.com] Authentication successful - Name: Shamanth Krishna - ID: 107509420091294160303 - IP: 127.0.0.1
+2025-07-30 12:54:51,965 - main - INFO - [USER: shamanth.krishna@tismotech.com] User details - Given Name: Shamanth - Family Name: Krishna - Email Verified: True
+2025-07-30 12:54:51,966 - main - INFO - [USER: shamanth.krishna@tismotech.com] Dashboard accessed from IP: 127.0.0.1
+2025-07-30 12:54:57,077 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
+2025-07-30 12:55:08,367 - main - INFO - === HireOps Application Shutting Down ===
+2025-07-30 12:55:08,367 - main - INFO - Application stopped at 2025-07-30 12:55:08.367718
+2025-08-04 15:16:05,214 - main - INFO - OAuth client registered successfully
+2025-08-04 15:16:05,215 - main - INFO - === HireOps Application Starting ===
+2025-08-04 15:16:05,216 - main - INFO - Application started at 2025-08-04 15:16:05.215983
+2025-08-04 15:16:05,216 - main - INFO - FastAPI server is ready to handle requests
+2025-08-04 15:16:08,765 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
+2025-08-04 15:16:11,231 - main - INFO - [ANONYMOUS] Google OAuth login initiated from IP: 127.0.0.1 - Redirect URI: http://127.0.0.1:8000/auth
+2025-08-04 15:16:12,243 - httpx - INFO - HTTP Request: GET https://accounts.google.com/.well-known/openid-configuration "HTTP/1.1 200 OK"
+2025-08-04 15:16:17,317 - main - INFO - [AUTH_PROCESS] Google OAuth callback received from IP: 127.0.0.1
+2025-08-04 15:16:17,936 - httpx - INFO - HTTP Request: POST https://oauth2.googleapis.com/token "HTTP/1.1 200 OK"
+2025-08-04 15:16:18,390 - httpx - INFO - HTTP Request: GET https://www.googleapis.com/oauth2/v3/certs "HTTP/1.1 200 OK"
+2025-08-04 15:16:18,439 - main - INFO - [AUTH_PROCESS] Access token successfully received from Google
+2025-08-04 15:16:18,439 - main - INFO - [USER: shamanthkrishna0@gmail.com] Authentication successful - Name: Shamanth Krishna - ID: 104510563051296659434 - IP: 127.0.0.1
+2025-08-04 15:16:18,440 - main - INFO - [USER: shamanthkrishna0@gmail.com] User details - Given Name: Shamanth - Family Name: Krishna - Email Verified: True
+2025-08-04 15:16:18,440 - main - INFO - [USER: shamanthkrishna0@gmail.com] Dashboard accessed from IP: 127.0.0.1
+2025-08-04 15:16:36,900 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
+2025-08-04 15:18:05,720 - main - INFO - [ANONYMOUS] Google OAuth login initiated from IP: 127.0.0.1 - Redirect URI: http://127.0.0.1:8000/auth
+2025-08-04 15:18:14,242 - main - INFO - [AUTH_PROCESS] Google OAuth callback received from IP: 127.0.0.1
+2025-08-04 15:18:14,917 - httpx - INFO - HTTP Request: POST https://oauth2.googleapis.com/token "HTTP/1.1 200 OK"
+2025-08-04 15:18:14,922 - main - INFO - [AUTH_PROCESS] Access token successfully received from Google
+2025-08-04 15:18:14,923 - main - INFO - [USER: shamanth.krishna@tismotech.com] Authentication successful - Name: Shamanth Krishna - ID: 107509420091294160303 - IP: 127.0.0.1
+2025-08-04 15:18:14,923 - main - INFO - [USER: shamanth.krishna@tismotech.com] User details - Given Name: Shamanth - Family Name: Krishna - Email Verified: True
+2025-08-04 15:18:14,924 - main - INFO - [USER: shamanth.krishna@tismotech.com] Dashboard accessed from IP: 127.0.0.1
+2025-08-05 08:53:52,466 - main - INFO - === HireOps Application Shutting Down ===
+2025-08-05 08:53:52,481 - main - INFO - Application stopped at 2025-08-05 08:53:52.480163

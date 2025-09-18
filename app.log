@@ -241,3 +241,11 @@
 2025-09-18 11:17:33,769 - main - INFO - [USER: shamanthkrishna0@gmail.com] Authentication successful - Name: Shamanth Krishna - ID: 104510563051296659434 - IP: 127.0.0.1
 2025-09-18 11:17:33,770 - main - INFO - [USER: shamanthkrishna0@gmail.com] User details - Given Name: Shamanth - Family Name: Krishna - Email Verified: True
 2025-09-18 11:17:33,771 - main - INFO - [USER: shamanthkrishna0@gmail.com] Dashboard accessed from IP: 127.0.0.1
+2025-09-18 11:43:15,388 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
+2025-09-18 11:43:17,454 - main - INFO - [ANONYMOUS] Google OAuth login initiated from IP: 127.0.0.1 - Redirect URI: http://127.0.0.1:8000/auth
+2025-09-18 11:43:21,296 - main - INFO - [AUTH_PROCESS] Google OAuth callback received from IP: 127.0.0.1
+2025-09-18 11:43:22,083 - httpx - INFO - HTTP Request: POST https://oauth2.googleapis.com/token "HTTP/1.1 200 OK"
+2025-09-18 11:43:22,116 - main - INFO - [AUTH_PROCESS] Access token successfully received from Google
+2025-09-18 11:43:22,117 - main - INFO - [USER: shamanthkrishna0@gmail.com] Authentication successful - Name: Shamanth Krishna - ID: 104510563051296659434 - IP: 127.0.0.1
+2025-09-18 11:43:22,118 - main - INFO - [USER: shamanthkrishna0@gmail.com] User details - Given Name: Shamanth - Family Name: Krishna - Email Verified: True
+2025-09-18 11:43:22,118 - main - INFO - [USER: shamanthkrishna0@gmail.com] Dashboard accessed from IP: 127.0.0.1

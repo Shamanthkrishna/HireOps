@@ -214,6 +214,7 @@
         <div class="user-info">
             <img class="user-avatar" src="{{ user.picture if user.picture else 'https://via.placeholder.com/40x40/4ea1ff/ffffff?text=U' }}" alt="Profile Picture">
             <span class="user-name">{{ user.name if user.name else 'User' }}</span>
+            <a href="/profile" class="logout-btn" style="background: #2d3748; margin-right: 0.5rem;">Profile</a>
             <a href="/" class="logout-btn">Logout</a>
         </div>
     </nav>

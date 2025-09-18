@@ -117,3 +117,26 @@ async def auth(request: Request):
             "request": request, 
             "error": f"Authentication failed: {str(e)}"
         })
+
+@app.get("/profile")
+async def profile(request: Request):
+    """用户个人资料页面"""
+    try:
+        # 获取用户信息
+        user = request.session.get('user')
+        if not user:
+            logger.warning(f"[PROFILE_ACCESS] Unauthorized access attempt from IP: {request.client.host if request.client else 'Unknown'}")
+            return RedirectResponse(url="/", status_code=302)
+        
+        user_email = user.get('email', 'unknown')
+        user_ip = request.client.host if request.client else 'Unknown'
+        
+        # 记录用户访问个人资料页面
+        logger.info(f"[USER: {user_email}] Profile page accessed from IP: {user_ip}")
+        
+        return templates.TemplateResponse("profile.html", {"request": request, "user": user})
+        
+    except Exception as e:
+        user_ip = request.client.host if request.client else 'Unknown'
+        logger.error(f"[PROFILE_ERROR] Profile access failed from IP: {user_ip} - Error: {str(e)} - Type: {type(e).__name__}")
+        return RedirectResponse(url="/", status_code=302)

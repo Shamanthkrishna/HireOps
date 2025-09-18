@@ -217,3 +217,27 @@
 2025-07-29 23:58:05,479 - main - INFO - [USER: shamanthkrishna0@gmail.com] Dashboard accessed from IP: 127.0.0.1
 2025-07-29 23:58:12,273 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
 >>>>>>> 6c473098bfc2eb783041597fe292624a5043d064
+2025-09-18 11:13:34,644 - __main__ - INFO - OAuth client registered successfully
+2025-09-18 11:16:54,981 - main - INFO - OAuth client registered successfully
+2025-09-18 11:16:54,983 - main - INFO - === HireOps Application Starting ===
+2025-09-18 11:16:54,984 - main - INFO - Application started at 2025-09-18 11:16:54.983985
+2025-09-18 11:16:54,984 - main - INFO - FastAPI server is ready to handle requests
+2025-09-18 11:16:59,295 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
+2025-09-18 11:17:01,941 - main - INFO - [ANONYMOUS] Google OAuth login initiated from IP: 127.0.0.1 - Redirect URI: http://127.0.0.1:8000/auth
+2025-09-18 11:17:03,228 - httpx - INFO - HTTP Request: GET https://accounts.google.com/.well-known/openid-configuration "HTTP/1.1 200 OK"
+2025-09-18 11:17:14,657 - main - INFO - [AUTH_PROCESS] Google OAuth callback received from IP: 127.0.0.1
+2025-09-18 11:17:15,311 - httpx - INFO - HTTP Request: POST https://oauth2.googleapis.com/token "HTTP/1.1 200 OK"
+2025-09-18 11:17:15,766 - httpx - INFO - HTTP Request: GET https://www.googleapis.com/oauth2/v3/certs "HTTP/1.1 200 OK"
+2025-09-18 11:17:15,842 - main - INFO - [AUTH_PROCESS] Access token successfully received from Google
+2025-09-18 11:17:15,843 - main - INFO - [USER: shamanthkrishna0@gmail.com] Authentication successful - Name: Shamanth Krishna - ID: 104510563051296659434 - IP: 127.0.0.1
+2025-09-18 11:17:15,843 - main - INFO - [USER: shamanthkrishna0@gmail.com] User details - Given Name: Shamanth - Family Name: Krishna - Email Verified: True
+2025-09-18 11:17:15,843 - main - INFO - [USER: shamanthkrishna0@gmail.com] Dashboard accessed from IP: 127.0.0.1
+2025-09-18 11:17:22,704 - main - WARNING - [PROFILE_ACCESS] Unauthorized access attempt from IP: 127.0.0.1
+2025-09-18 11:17:22,709 - main - INFO - [ANONYMOUS] Home page accessed from IP: 127.0.0.1
+2025-09-18 11:17:26,061 - main - INFO - [ANONYMOUS] Google OAuth login initiated from IP: 127.0.0.1 - Redirect URI: http://127.0.0.1:8000/auth
+2025-09-18 11:17:33,119 - main - INFO - [AUTH_PROCESS] Google OAuth callback received from IP: 127.0.0.1
+2025-09-18 11:17:33,763 - httpx - INFO - HTTP Request: POST https://oauth2.googleapis.com/token "HTTP/1.1 200 OK"
+2025-09-18 11:17:33,769 - main - INFO - [AUTH_PROCESS] Access token successfully received from Google
+2025-09-18 11:17:33,769 - main - INFO - [USER: shamanthkrishna0@gmail.com] Authentication successful - Name: Shamanth Krishna - ID: 104510563051296659434 - IP: 127.0.0.1
+2025-09-18 11:17:33,770 - main - INFO - [USER: shamanthkrishna0@gmail.com] User details - Given Name: Shamanth - Family Name: Krishna - Email Verified: True
+2025-09-18 11:17:33,771 - main - INFO - [USER: shamanthkrishna0@gmail.com] Dashboard accessed from IP: 127.0.0.1

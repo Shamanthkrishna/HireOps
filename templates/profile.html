@@ -77,7 +77,10 @@
         <img class="profile-pic" src="{{ user['picture'] }}" alt="Profile Picture">
         <div class="profile-name">Welcome, {{ user['name'] }}!</div>
         <div class="profile-email">{{ user['email'] }}</div>
-        <a href="/" class="logout-btn">Logout</a>
+        <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem;">
+            <a href="/dashboard" class="logout-btn" style="background: #2d3748;">Dashboard</a>
+            <a href="/" class="logout-btn">Logout</a>
+        </div>
     </div>
 </body>
 </html>

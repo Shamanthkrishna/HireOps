@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}Requirements - HireOps{% endblock %}
+{% block header %}Requirements{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h4>All Requirements</h4>
+    {% if user.role in ['sales_person', 'account_manager', 'business_head'] %}
+    <a href="/requirements/create" class="btn btn-primary">
+        <i class="fas fa-plus"></i> New Requirement
+    </a>
+    {% endif %}
+</div>
+
+<!-- Filters -->
+<div class="card mb-4">
+    <div class="card-body">
+        <form method="get" class="row g-3">
+            <div class="col-md-4">
+                <select name="status" class="form-select">
+                    <option value="">All Statuses</option>
+                    {% for status in statuses %}
+                    <option value="{{ status }}">{{ status|title|replace('_', ' ') }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-outline-primary">Filter</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Requirements Table -->
+<div class="card">
+    <div class="card-body">
+        {% if requirements %}
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Req ID</th>
+                        <th>Title</th>
+                        <th>Client</th>
+                        <th>Status</th>
+                        <th>Priority</th>
+                        <th>Assigned To</th>
+                        <th>Created</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for req in requirements %}
+                    <tr>
+                        <td><strong>{{ req.req_id }}</strong></td>
+                        <td>{{ req.title }}</td>
+                        <td>{{ req.client.name if req.client else 'N/A' }}</td>
+                        <td>
+                            <span class="badge bg-{% if req.status == 'open' %}warning{% elif req.status == 'assigned' %}info{% elif req.status == 'in_progress' %}primary{% elif req.status == 'closed' %}success{% else %}secondary{% endif %}">
+                                {{ req.status|title|replace('_', ' ') }}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="badge bg-{% if req.priority == 'high' %}danger{% elif req.priority == 'medium' %}warning{% else %}secondary{% endif %}">
+                                {{ req.priority|title }}
+                            </span>
+                        </td>
+                        <td>{{ req.assigned_recruiter.full_name if req.assigned_recruiter else 'Unassigned' }}</td>
+                        <td>{{ req.created_at.strftime('%Y-%m-%d') }}</td>
+                        <td>
+                            <a href="/requirements/{{ req.id }}" class="btn btn-sm btn-outline-primary">View</a>
+                            {% if user.role in ['account_manager', 'business_head'] or (user.role == 'sales_person' and req.created_by == user.id) %}
+                            <a href="/requirements/{{ req.id }}/edit" class="btn btn-sm btn-outline-secondary">Edit</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="text-center py-5">
+            <i class="fas fa-briefcase fa-3x text-muted mb-3"></i>
+            <h5 class="text-muted">No requirements found</h5>
+            <p class="text-muted">Start by creating a new requirement.</p>
+            {% if user.role in ['sales_person', 'account_manager', 'business_head'] %}
+            <a href="/requirements/create" class="btn btn-primary">Create First Requirement</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HireOps Feature Showcase</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/static/images/favicon.svg">
+    <link rel="alternate icon" href="/static/images/favicon.svg">
+    
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .showcase-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        
+        .showcase-hero h1 {
+            font-size: 3rem;
+            margin: 0 0 1rem 0;
+            font-weight: 700;
+        }
+        
+        .showcase-hero p {
+            font-size: 1.25rem;
+            margin: 0 0 2rem 0;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1.5rem;
+            color: #1e293b;
+            font-weight: 600;
+        }
+        
+        .feature-card p {
+            margin: 0 0 1.5rem 0;
+            color: #64748b;
+            line-height: 1.6;
+        }
+        
+        .feature-highlights {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .feature-highlights li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: #374151;
+            font-size: 0.9rem;
+        }
+        
+        .feature-highlights li i {
+            color: #10b981;
+            width: 16px;
+        }
+        
+        .status-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+        }
+        
+        .status-implemented {
+            background: #dcfce7;
+            color: #166534;
+        }
+        
+        .status-partial {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .status-planned {
+            background: #e0e7ff;
+            color: #4338ca;
+        }
+        
+        .demo-actions {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: #f8fafc;
+        }
+        
+        .demo-actions h2 {
+            margin: 0 0 2rem 0;
+            color: #1e293b;
+            font-size: 2rem;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-demo {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-demo:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+        
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .tech-stack {
+            background: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .tech-stack h2 {
+            margin: 0 0 2rem 0;
+            color: #1e293b;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .tech-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            background: #f8fafc;
+            transition: all 0.2s ease;
+        }
+        
+        .tech-item:hover {
+            background: #e2e8f0;
+            transform: translateY(-2px);
+        }
+        
+        .tech-item i {
+            font-size: 2rem;
+            color: #667eea;
+        }
+        
+        .tech-item span {
+            font-size: 0.875rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .showcase-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-demo {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="showcase-hero">
+        <h1>🚀 HireOps Feature Showcase</h1>
+        <p>Experience the complete recruitment management system with advanced features for modern hiring teams</p>
+        
+        <div class="action-buttons">
+            <a href="/dashboard" class="btn-demo">
+                <i class="fas fa-tachometer-alt"></i>
+                Try Live Demo
+            </a>
+            <a href="https://github.com/Shamanthkrishna/HireOps" class="btn-demo btn-secondary">
+                <i class="fab fa-github"></i>
+                View Source Code
+            </a>
+        </div>
+    </section>
+    
+    <!-- Features Grid -->
+    <section class="features-grid">
+        <!-- Visual Pipeline -->
+        <div class="feature-card">
+            <span class="status-badge status-implemented">✅ Implemented</span>
+            <div class="feature-icon">
+                <i class="fas fa-project-diagram"></i>
+            </div>
+            <h3>Visual Pipeline</h3>
+            <p>Drag-and-drop Kanban boards for tracking candidates through every stage with real-time updates and visual progress indicators.</p>
+            <ul class="feature-highlights">
+                <li><i class="fas fa-check"></i> Interactive drag-and-drop interface</li>
+                <li><i class="fas fa-check"></i> Real-time status updates</li>
+                <li><i class="fas fa-check"></i> Mobile-friendly touch support</li>
+                <li><i class="fas fa-check"></i> Stage conversion tracking</li>
+                <li><i class="fas fa-check"></i> Visual progress indicators</li>
+            </ul>
+        </div>
+        
+        <!-- Team Collaboration -->
+        <div class="feature-card">
+            <span class="status-badge status-implemented">✅ Implemented</span>
+            <div class="feature-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <h3>Team Collaboration</h3>
+            <p>Enable seamless collaboration between recruiters, hiring managers, and interviewers with advanced communication tools.</p>
+            <ul class="feature-highlights">
+                <li><i class="fas fa-check"></i> Real-time commenting system</li>
+                <li><i class="fas fa-check"></i> @mentions and notifications</li>
+                <li><i class="fas fa-check"></i> Task assignment and tracking</li>
+                <li><i class="fas fa-check"></i> Team member presence indicators</li>
+                <li><i class="fas fa-check"></i> Activity timeline</li>
+            </ul>
+        </div>
+        
+        <!-- Advanced Analytics -->
+        <div class="feature-card">
+            <span class="status-badge status-implemented">✅ Implemented</span>
+            <div class="feature-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Advanced Analytics</h3>
+            <p>Comprehensive reports with data visualization, hiring funnel insights, and performance dashboards powered by Chart.js.</p>
+            <ul class="feature-highlights">
+                <li><i class="fas fa-check"></i> Interactive charts and graphs</li>
+                <li><i class="fas fa-check"></i> Time-to-hire metrics</li>
+                <li><i class="fas fa-check"></i> Source effectiveness analysis</li>
+                <li><i class="fas fa-check"></i> Diversity & inclusion tracking</li>
+                <li><i class="fas fa-check"></i> AI-powered insights</li>
+            </ul>
+        </div>
+        
+        <!-- Complete CRUD Operations -->
+        <div class="feature-card">
+            <span class="status-badge status-implemented">✅ Implemented</span>
+            <div class="feature-icon">
+                <i class="fas fa-database"></i>
+            </div>
+            <h3>Complete CRUD Operations</h3>
+            <p>Full create, read, update, delete functionality for jobs, candidates, and applications with rich form interfaces.</p>
+            <ul class="feature-highlights">
+                <li><i class="fas fa-check"></i> Modal-based form interfaces</li>
+                <li><i class="fas fa-check"></i> Advanced field validation</li>
+                <li><i class="fas fa-check"></i> Rich text editing</li>
+                <li><i class="fas fa-check"></i> File attachment support</li>
+                <li><i class="fas fa-check"></i> Batch operations</li>
+            </ul>
+        </div>
+        
+        <!-- Interview Scheduling -->
+        <div class="feature-card">
+            <span class="status-badge status-implemented">✅ Implemented</span>
+            <div class="feature-icon">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h3>Interview Scheduling</h3>
+            <p>Integrated calendar system for scheduling interviews with automatic notifications and reminder management.</p>
+            <ul class="feature-highlights">
+                <li><i class="fas fa-check"></i> Calendar integration</li>
+                <li><i class="fas fa-check"></i> Multiple interview types</li>
+                <li><i class="fas fa-check"></i> Automatic notifications</li>
+                <li><i class="fas fa-check"></i> Interviewer availability</li>
+                <li><i class="fas fa-check"></i> Meeting link generation</li>
+            </ul>
+        </div>
+        
+        <!-- Mobile Responsive -->
+        <div class="feature-card">
+            <span class="status-badge status-implemented">✅ Implemented</span>
+            <div class="feature-icon">
+                <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3>Mobile Ready</h3>
+            <p>Full mobile responsiveness with touch-friendly interfaces and optimized layouts for all device sizes.</p>
+            <ul class="feature-highlights">
+                <li><i class="fas fa-check"></i> Responsive design patterns</li>
+                <li><i class="fas fa-check"></i> Touch-friendly drag-and-drop</li>
+                <li><i class="fas fa-check"></i> Mobile-optimized navigation</li>
+                <li><i class="fas fa-check"></i> Adaptive chart displays</li>
+                <li><i class="fas fa-check"></i> Gesture support</li>
+            </ul>
+        </div>
+        
+        <!-- Security & Compliance -->
+        <div class="feature-card">
+            <span class="status-badge status-partial">🔄 Partial</span>
+            <div class="feature-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3>Secure & Compliant</h3>
+            <p>Enterprise-grade security with audit trails, data encryption, and GDPR compliance built into the core system.</p>
+            <ul class="feature-highlights">
+                <li><i class="fas fa-check"></i> JWT authentication</li>
+                <li><i class="fas fa-check"></i> Password encryption</li>
+                <li><i class="fas fa-clock"></i> Audit trail logging</li>
+                <li><i class="fas fa-clock"></i> GDPR compliance tools</li>
+                <li><i class="fas fa-clock"></i> Data export/deletion</li>
+            </ul>
+        </div>
+        
+        <!-- Smart Integrations -->
+        <div class="feature-card">
+            <span class="status-badge status-planned">📋 Planned</span>
+            <div class="feature-icon">
+                <i class="fas fa-plug"></i>
+            </div>
+            <h3>Smart Integrations</h3>
+            <p>Connect with LinkedIn, calendar systems, email platforms, and other recruitment tools through robust API integrations.</p>
+            <ul class="feature-highlights">
+                <li><i class="fas fa-clock"></i> LinkedIn integration</li>
+                <li><i class="fas fa-clock"></i> Google Calendar sync</li>
+                <li><i class="fas fa-clock"></i> Email automation</li>
+                <li><i class="fas fa-clock"></i> ATS integrations</li>
+                <li><i class="fas fa-clock"></i> Webhook support</li>
+            </ul>
+        </div>
+    </section>
+    
+    <!-- Technology Stack -->
+    <section class="tech-stack">
+        <h2>Built with Modern Technologies</h2>
+        <div class="tech-grid">
+            <div class="tech-item">
+                <i class="fab fa-python"></i>
+                <span>FastAPI</span>
+            </div>
+            <div class="tech-item">
+                <i class="fas fa-database"></i>
+                <span>SQLite</span>
+            </div>
+            <div class="tech-item">
+                <i class="fab fa-js-square"></i>
+                <span>Vanilla JS</span>
+            </div>
+            <div class="tech-item">
+                <i class="fab fa-html5"></i>
+                <span>HTML5</span>
+            </div>
+            <div class="tech-item">
+                <i class="fab fa-css3-alt"></i>
+                <span>CSS3</span>
+            </div>
+            <div class="tech-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>Chart.js</span>
+            </div>
+            <div class="tech-item">
+                <i class="fab fa-docker"></i>
+                <span>Docker</span>
+            </div>
+            <div class="tech-item">
+                <i class="fas fa-server"></i>
+                <span>Uvicorn</span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Demo Actions -->
+    <section class="demo-actions">
+        <h2>Ready to Experience HireOps?</h2>
+        
+        <div class="action-buttons">
+            <a href="/dashboard" class="btn-demo">
+                <i class="fas fa-play"></i>
+                Launch Dashboard
+            </a>
+            <a href="/" class="btn-demo btn-secondary">
+                <i class="fas fa-sign-in-alt"></i>
+                Login Page
+            </a>
+        </div>
+        
+        <div style="margin-top: 2rem; padding: 1rem; background: #f0f9ff; border-radius: 8px; border-left: 4px solid #3b82f6;">
+            <p style="margin: 0; color: #1e40af; font-weight: 500;">
+                <i class="fas fa-info-circle" style="margin-right: 0.5rem;"></i>
+                Demo Login: <strong>admin</strong> / <strong>admin123</strong>
+            </p>
+        </div>
+    </section>
+    
+    <script>
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate feature cards on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                observer.observe(card);
+            });
+        });
+        
+        // Add CSS animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

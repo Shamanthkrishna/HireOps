@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: hireops
+      POSTGRES_USER: hireops
+      POSTGRES_PASSWORD: hireops_password_2025
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - hireops_network
+
+  # Redis for caching and sessions
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - hireops_network
+
+  # HireOps Application
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://hireops:hireops_password_2025@db:5432/hireops
+      - REDIS_URL=redis://redis:6379
+      - SECRET_KEY=your-super-secret-key-change-in-production-2025
+      - ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=30
+      - DEBUG=False
+      - SMTP_HOST=smtp.gmail.com
+      - SMTP_PORT=587
+      - SMTP_USERNAME=your-email@gmail.com
+      - SMTP_PASSWORD=your-app-password
+      - FROM_EMAIL=noreply@hireops.com
+    volumes:
+      - ./uploads:/app/uploads
+    depends_on:
+      - db
+      - redis
+    networks:
+      - hireops_network
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+    depends_on:
+      - app
+    networks:
+      - hireops_network
+
+volumes:
+  postgres_data:
+
+networks:
+  hireops_network:
+    driver: bridge

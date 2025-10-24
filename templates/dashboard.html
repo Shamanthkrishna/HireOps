@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - HireOps</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/static/images/favicon.svg">
+    <link rel="alternate icon" href="/static/images/favicon.svg">
+    <link rel="mask-icon" href="/static/images/favicon.svg" color="#4f46e5">
+    <meta name="theme-color" content="#4f46e5">
+    
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <link rel="stylesheet" href="/static/css/dashboard-advanced.css">
+    <link rel="stylesheet" href="/static/css/modals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js for Analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- API Configuration -->
+    <script>
+        window.API_BASE = window.location.origin;
+        
+        // Utility function for making API calls
+        window.apiCall = function(endpoint, options = {}) {
+            const apiBase = window.API_BASE || window.location.origin;
+            const url = endpoint.startsWith('/') ? `${apiBase}${endpoint}` : `${apiBase}/${endpoint}`;
+            return fetch(url, options);
+        };
+    </script>
+</head>
+<body class="dashboard-body">
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <div class="header-left">
+                <div class="logo">
+                    <i class="fas fa-users-cog"></i>
+                    <span>HireOps</span>
+                </div>
+                <div class="breadcrumb">
+                    <span>Dashboard</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="dashboard.showCreateJobModal()">
+                        <i class="fas fa-plus"></i>
+                        New Job
+                    </button>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/32x32?text=U" alt="User" class="user-avatar">
+                        <span class="user-name" id="user-name">Loading...</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Layout -->
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="#overview" class="nav-item active" onclick="dashboard.showSection('overview')">
+                    <i class="fas fa-home"></i>
+                    <span>Overview</span>
+                </a>
+                <a href="#jobs" class="nav-item" onclick="dashboard.showSection('jobs')">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Jobs</span>
+                </a>
+                <a href="#candidates" class="nav-item" onclick="dashboard.showSection('candidates')">
+                    <i class="fas fa-users"></i>
+                    <span>Candidates</span>
+                </a>
+                <a href="#applications" class="nav-item" onclick="dashboard.showSection('applications')">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Applications</span>
+                </a>
+                <a href="#interviews" class="nav-item" onclick="dashboard.showSection('interviews')">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Interviews</span>
+                </a>
+                <a href="#analytics" class="nav-item" onclick="dashboard.showSection('analytics')">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Analytics</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Overview Section -->
+            <section id="overview-section" class="content-section active">
+                <div class="section-header">
+                    <h1>Dashboard Overview</h1>
+                    <p>Welcome back! Here's what's happening with your recruitment.</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number" id="total-jobs">0</div>
+                            <div class="stat-label">Active Jobs</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>12% this month</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number" id="total-candidates">0</div>
+                            <div class="stat-label">Candidates</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>28% this month</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number" id="total-applications">0</div>
+                            <div class="stat-label">Applications</div>
+                            <div class="stat-change neutral">
+                                <i class="fas fa-minus"></i>
+                                <span>This week</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number" id="offers-made">0</div>
+                            <div class="stat-label">Offers Made</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>85% accepted</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pipeline Overview -->
+                <div class="pipeline-section">
+                    <h2>Application Pipeline</h2>
+                    <div class="pipeline-board">
+                        <div class="pipeline-column">
+                            <div class="column-header">
+                                <h3>Applied</h3>
+                                <span class="count" id="applied-count">0</span>
+                            </div>
+                            <div class="applications-list" id="applied-list">
+                                <div class="loading">Loading...</div>
+                            </div>
+                        </div>
+
+                        <div class="pipeline-column">
+                            <div class="column-header">
+                                <h3>Screening</h3>
+                                <span class="count" id="screening-count">0</span>
+                            </div>
+                            <div class="applications-list" id="screening-list">
+                                <div class="loading">Loading...</div>
+                            </div>
+                        </div>
+
+                        <div class="pipeline-column">
+                            <div class="column-header">
+                                <h3>Interview</h3>
+                                <span class="count" id="interview-count">0</span>
+                            </div>
+                            <div class="applications-list" id="interview-list">
+                                <div class="loading">Loading...</div>
+                            </div>
+                        </div>
+
+                        <div class="pipeline-column">
+                            <div class="column-header">
+                                <h3>Offer</h3>
+                                <span class="count" id="offer-count">0</span>
+                            </div>
+                            <div class="applications-list" id="offer-list">
+                                <div class="loading">Loading...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="activity-section">
+                    <h2>Recent Activity</h2>
+                    <div class="activity-list" id="recent-activity">
+                        <div class="loading">Loading recent activity...</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Jobs Section -->
+            <section id="jobs-section" class="content-section">
+                <div class="section-header">
+                    <h1>Jobs Management</h1>
+                    <button class="btn btn-primary" onclick="showCreateJobModal()">
+                        <i class="fas fa-plus"></i>
+                        Create New Job
+                    </button>
+                </div>
+                <div class="jobs-content">
+                    <div class="loading">Loading jobs...</div>
+                </div>
+            </section>
+
+            <!-- Candidates Section -->
+            <section id="candidates-section" class="content-section">
+                <div class="section-header">
+                    <h1>Candidates</h1>
+                    <button class="btn btn-primary" onclick="showCreateCandidateModal()">
+                        <i class="fas fa-user-plus"></i>
+                        Add Candidate
+                    </button>
+                </div>
+                <div class="candidates-content">
+                    <div class="loading">Loading candidates...</div>
+                </div>
+            </section>
+
+            <!-- Applications Section -->
+            <section id="applications-section" class="content-section">
+                <div class="section-header">
+                    <h1>Applications</h1>
+                    <div class="section-filters">
+                        <select id="status-filter" onchange="filterApplications()">
+                            <option value="">All Status</option>
+                            <option value="applied">Applied</option>
+                            <option value="screening">Screening</option>
+                            <option value="interview_scheduled">Interview Scheduled</option>
+                            <option value="interview_completed">Interview Completed</option>
+                            <option value="offer_extended">Offer Extended</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="applications-content">
+                    <div class="loading">Loading applications...</div>
+                </div>
+            </section>
+
+            <!-- Interviews Section -->
+            <section id="interviews-section" class="content-section">
+                <div class="section-header">
+                    <h1>Interviews</h1>
+                    <button class="btn btn-primary" onclick="showScheduleInterviewModal()">
+                        <i class="fas fa-calendar-plus"></i>
+                        Schedule Interview
+                    </button>
+                </div>
+                <div class="interviews-content">
+                    <div class="loading">Loading interviews...</div>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section id="analytics-section" class="content-section">
+                <div class="section-header">
+                    <h1>Analytics</h1>
+                    <p>Insights and metrics about your recruitment process</p>
+                </div>
+                <div class="analytics-content">
+                    <div class="loading">Loading analytics...</div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modals will be added here -->
+    <div id="modal-container"></div>
+
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/modals.js"></script>
+    <script src="/static/js/collaboration.js"></script>
+    <script src="/static/js/analytics.js"></script>
+    <script src="/static/js/dashboard-enhanced.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HireOps Authentication Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #3f36d5; }
+        input {
+            display: block;
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        .success { background: #d4edda; border-color: #c3e6cb; color: #155724; }
+        .error { background: #f8d7da; border-color: #f5c6cb; color: #721c24; }
+        .info { background: #d1ecf1; border-color: #bee5eb; color: #0c5460; }
+    </style>
+</head>
+<body>
+    <h1>🧪 HireOps Authentication Test</h1>
+    
+    <div class="test-section">
+        <h2>🌐 Server Health Check</h2>
+        <button onclick="testHealth()">Test Server Connection</button>
+        <div id="health-result" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>🔐 Login Test</h2>
+        <input type="text" id="login-username" placeholder="Username (try: admin)" value="admin">
+        <input type="password" id="login-password" placeholder="Password (try: admin123)" value="admin123">
+        <button onclick="testLogin()">Test Login</button>
+        <div id="login-result" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>📝 Registration Test</h2>
+        <input type="text" id="reg-username" placeholder="Username" value="testuser">
+        <input type="email" id="reg-email" placeholder="Email" value="test@example.com">
+        <input type="text" id="reg-fullname" placeholder="Full Name" value="Test User">
+        <select id="reg-role">
+            <option value="recruiter">Recruiter</option>
+            <option value="hr">HR Manager</option>
+            <option value="interviewer">Interviewer</option>
+        </select>
+        <input type="password" id="reg-password" placeholder="Password" value="test123">
+        <button onclick="testRegister()">Test Registration</button>
+        <div id="register-result" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>📋 Debug Information</h2>
+        <button onclick="showDebugInfo()">Show Debug Info</button>
+        <div id="debug-result" class="result"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://127.0.0.1:8000';
+        
+        function showResult(elementId, message, type = 'info') {
+            const element = document.getElementById(elementId);
+            element.innerHTML = message;
+            element.className = `result ${type}`;
+        }
+        
+        async function testHealth() {
+            try {
+                const response = await fetch(`${API_BASE}/health`);
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showResult('health-result', 
+                        `✅ Server is healthy!<br>Status: ${data.status}<br>Message: ${data.message}`, 
+                        'success');
+                } else {
+                    showResult('health-result', `❌ Health check failed: ${response.status}`, 'error');
+                }
+            } catch (error) {
+                showResult('health-result', `❌ Connection failed: ${error.message}`, 'error');
+            }
+        }
+        
+        async function testLogin() {
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+            
+            try {
+                const response = await fetch(`${API_BASE}/api/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    showResult('login-result', 
+                        `✅ Login successful!<br>Token: ${data.access_token.substring(0, 20)}...<br>Type: ${data.token_type}`, 
+                        'success');
+                } else {
+                    const errorData = await response.json().catch(() => ({}));
+                    showResult('login-result', 
+                        `❌ Login failed (${response.status})<br>Error: ${errorData.detail || 'Unknown error'}`, 
+                        'error');
+                }
+            } catch (error) {
+                showResult('login-result', `❌ Login error: ${error.message}`, 'error');
+            }
+        }
+        
+        async function testRegister() {
+            const registerData = {
+                username: document.getElementById('reg-username').value,
+                email: document.getElementById('reg-email').value,
+                full_name: document.getElementById('reg-fullname').value,
+                role: document.getElementById('reg-role').value,
+                password: document.getElementById('reg-password').value
+            };
+            
+            try {
+                const response = await fetch(`${API_BASE}/api/auth/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(registerData)
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    showResult('register-result', 
+                        `✅ Registration successful!<br>Username: ${data.username}<br>Email: ${data.email}<br>Role: ${data.role}`, 
+                        'success');
+                } else {
+                    const errorData = await response.json().catch(() => ({}));
+                    showResult('register-result', 
+                        `❌ Registration failed (${response.status})<br>Error: ${errorData.detail || 'Unknown error'}`, 
+                        'error');
+                }
+            } catch (error) {
+                showResult('register-result', `❌ Registration error: ${error.message}`, 'error');
+            }
+        }
+        
+        function showDebugInfo() {
+            const info = `
+                <strong>Debug Information:</strong><br>
+                • API Base URL: ${API_BASE}<br>
+                • Current Time: ${new Date().toLocaleString()}<br>
+                • User Agent: ${navigator.userAgent.substring(0, 50)}...<br>
+                • Window Location: ${window.location.href}<br>
+                • Server Status: Check health test above
+            `;
+            showResult('debug-result', info, 'info');
+        }
+        
+        // Auto-test health on page load
+        window.addEventListener('load', testHealth);
+    </script>
+</body>
+</html>

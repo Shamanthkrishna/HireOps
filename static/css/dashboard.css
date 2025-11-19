@@ -1,6 +1,7 @@
 .dashboard-body {
     background: var(--gray-50);
     min-height: 100vh;
+    transition: background-color 0.3s ease;
 }
 
 /* Dashboard Navbar */

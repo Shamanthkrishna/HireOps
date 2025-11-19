@@ -44,56 +44,8 @@ function showSection(sectionName) {
 }
 
 function showPlaceholderMessage(message) {
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.style.cssText = `
-        position: fixed;
-        top: 90px;
-        right: 20px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        padding: 1rem 1.5rem;
-        border-radius: 8px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        z-index: 10000;
-        animation: slideIn 0.3s ease-out;
-        max-width: 300px;
-    `;
-    notification.innerHTML = `
-        <div style="display: flex; align-items: center; gap: 0.75rem;">
-            <i class="fas fa-info-circle" style="font-size: 1.25rem;"></i>
-            <div>
-                <strong style="display: block; margin-bottom: 0.25rem;">Feature Preview</strong>
-                <span style="font-size: 0.875rem;">${message}</span>
-            </div>
-        </div>
-    `;
-    
-    // Add animation
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes slideIn {
-            from {
-                transform: translateX(400px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-    `;
-    document.head.appendChild(style);
-    
-    document.body.appendChild(notification);
-    
-    // Remove after 3 seconds
-    setTimeout(() => {
-        notification.style.transition = 'all 0.3s ease-out';
-        notification.style.transform = 'translateX(400px)';
-        notification.style.opacity = '0';
-        setTimeout(() => notification.remove(), 300);
-    }, 3000);
+    // Use toast notification system
+    window.toast.info(message, 3000);
 }
 
 function animateDashboardStats() {

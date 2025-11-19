@@ -13,10 +13,14 @@ load_dotenv()
 # Initialize FastAPI app
 app = FastAPI(title="HireOps", version="1.0.0")
 
-# Add session middleware
+# Add session middleware with production-ready settings
 app.add_middleware(
     SessionMiddleware,
-    secret_key=os.getenv("SECRET_KEY", "your-secret-key-change-this")
+    secret_key=os.getenv("SECRET_KEY", "your-secret-key-change-this"),
+    session_cookie="hireops_session",
+    max_age=14 * 24 * 60 * 60,  # 14 days
+    same_site="lax",
+    https_only=os.getenv("ENVIRONMENT", "development") == "production"
 )
 
 # Mount static files
@@ -79,29 +83,48 @@ async def login(request: Request):
 async def auth_callback(request: Request):
     """Google OAuth callback"""
     try:
+        # Get the token from Google
         token = await oauth.google.authorize_access_token(request)
         user_info = token.get('userinfo')
+        
         if user_info:
+            # Store user info in session
             request.session['user'] = {
                 'email': user_info.get('email'),
                 'name': user_info.get('name'),
                 'picture': user_info.get('picture')
             }
-        return RedirectResponse(url='/dashboard')
+            print(f"User logged in: {user_info.get('email')}")  # Debug log
+            return RedirectResponse(url='/dashboard', status_code=303)
+        else:
+            print("No user info received from Google")
+            return RedirectResponse(url='/?error=no_user_info', status_code=303)
+            
     except Exception as e:
         print(f"Auth error: {e}")
-        return RedirectResponse(url='/?error=auth_failed')
+        import traceback
+        traceback.print_exc()
+        return RedirectResponse(url=f'/?error=auth_failed&detail={str(e)}', status_code=303)
 
 @app.get("/auth/logout")
 async def logout(request: Request):
     """Logout user"""
-    request.session.pop('user', None)
-    return RedirectResponse(url='/')
+    request.session.clear()
+    return RedirectResponse(url='/', status_code=303)
 
 @app.get("/api/user")
 async def get_user(user: dict = Depends(get_current_user)):
     """Get current user info"""
     return user
+
+@app.get("/api/debug/session")
+async def debug_session(request: Request):
+    """Debug endpoint to check session"""
+    return {
+        "has_session": bool(request.session),
+        "session_data": dict(request.session) if request.session else {},
+        "has_user": 'user' in request.session
+    }
 
 if __name__ == "__main__":
     import uvicorn

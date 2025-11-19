@@ -68,7 +68,11 @@ async def dashboard(request: Request):
 @app.get("/auth/login")
 async def login(request: Request):
     """Initiate Google OAuth login"""
-    redirect_uri = os.getenv('GOOGLE_REDIRECT_URI', 'http://127.0.0.1:8000/auth/callback')
+    # Use environment variable or construct from request for flexibility
+    redirect_uri = os.getenv('GOOGLE_REDIRECT_URI')
+    if not redirect_uri:
+        # Fallback for local development
+        redirect_uri = f"{request.url.scheme}://{request.url.netloc}/auth/callback"
     return await oauth.google.authorize_redirect(request, redirect_uri)
 
 @app.get("/auth/callback")

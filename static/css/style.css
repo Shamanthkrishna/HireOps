@@ -482,39 +482,125 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .navbar {
+        padding: 0.75rem 0;
+    }
+    
+    .nav-content {
+        gap: 1rem;
+    }
+    
+    .logo {
+        font-size: 1.25rem;
+    }
+    
+    .logo i {
+        font-size: 1.5rem;
+    }
+    
+    .nav-links {
+        gap: 0.5rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.875rem;
+    }
+    
+    /* Make theme toggle more visible on mobile */
+    .theme-toggle {
+        width: 50px;
+        height: 28px;
+    }
+    
+    .theme-toggle-slider {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .theme-toggle-slider i {
+        font-size: 12px;
+    }
+    
+    [data-theme="dark"] .theme-toggle-slider {
+        transform: translateX(22px);
+    }
+    
+    .hero {
+        padding: 3rem 0;
+    }
+    
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        line-height: 1.2;
     }
 
     .hero-subtitle {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
 
     .hero-stats {
         flex-direction: column;
-        gap: 2rem;
+        gap: 1.5rem;
+    }
+    
+    .hero-buttons {
+        flex-wrap: wrap;
+        gap: 0.75rem;
     }
 
     .about-content {
         grid-template-columns: 1fr;
-    }
-
-    .nav-links {
-        gap: 0.75rem;
+        gap: 2rem;
     }
 
     .features-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .section {
+        padding: 3rem 0;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
 }
 
 @media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.75rem;
+    }
+    
     .hero-buttons {
         flex-direction: column;
+        width: 100%;
     }
 
     .btn-lg {
         width: 100%;
         justify-content: center;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .feature-card {
+        padding: 1.5rem;
+    }
+    
+    .stat-item h3 {
+        font-size: 1.5rem;
     }
 }

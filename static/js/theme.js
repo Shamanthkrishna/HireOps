@@ -40,8 +40,14 @@ class ThemeManager {
     }
 
     createThemeToggle() {
-        const navLinks = document.querySelector('.nav-links');
-        if (!navLinks) return;
+        // Try to find nav-links (landing page) or navbar-right (dashboard)
+        let container = document.querySelector('.nav-links');
+        
+        if (!container) {
+            container = document.querySelector('.navbar-right');
+        }
+        
+        if (!container) return;
 
         const toggleButton = document.createElement('button');
         toggleButton.className = 'theme-toggle';
@@ -53,7 +59,14 @@ class ThemeManager {
         `;
 
         toggleButton.addEventListener('click', () => this.toggleTheme());
-        navLinks.appendChild(toggleButton);
+        
+        // Insert before user menu on dashboard, or append to nav-links on landing page
+        const userMenu = container.querySelector('.user-menu');
+        if (userMenu) {
+            container.insertBefore(toggleButton, userMenu);
+        } else {
+            container.appendChild(toggleButton);
+        }
     }
 
     updateToggleIcon() {

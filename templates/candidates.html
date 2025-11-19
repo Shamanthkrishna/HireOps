@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidates - HireOps</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <link rel="stylesheet" href="/static/css/jobs.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="/static/js/theme.js"></script>
+</head>
+<body class="dashboard-body">
+    <!-- Top Navigation -->
+    <nav class="dashboard-navbar">
+        <div class="navbar-content">
+            <div class="logo">
+                <i class="fas fa-briefcase"></i>
+                <span>HireOps</span>
+            </div>
+            <div class="navbar-right">
+                <div class="user-menu">
+                    <img src="{{ user.picture }}" alt="{{ user.name }}" class="user-avatar">
+                    <span class="user-name">{{ user.name }}</span>
+                    <div class="user-dropdown">
+                        <a href="#"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="/auth/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="/dashboard" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Overview</span>
+                </a>
+                <a href="/jobs" class="nav-item">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Jobs</span>
+                </a>
+                <a href="/candidates" class="nav-item active">
+                    <i class="fas fa-users"></i>
+                    <span>Candidates</span>
+                </a>
+                <a href="/applications" class="nav-item">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Applications</span>
+                </a>
+                <a href="#analytics" class="nav-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="#settings" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <div class="page-header">
+                <div>
+                    <h1>Candidates</h1>
+                    <p class="subtitle">Manage your talent pool</p>
+                </div>
+                <button class="btn btn-primary" id="createCandidateBtn">
+                    <i class="fas fa-plus"></i> Add Candidate
+                </button>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters-bar">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search by name, email, or skills...">
+                </div>
+            </div>
+
+            <!-- Candidates Table -->
+            <div class="content-card">
+                <div class="table-container">
+                    <table class="data-table" id="candidatesTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Experience</th>
+                                <th>Current Position</th>
+                                <th>Added</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="candidatesTableBody">
+                        </tbody>
+                    </table>
+                    <div id="emptyState" class="empty-state" style="display: none;">
+                        <i class="fas fa-users fa-3x"></i>
+                        <p>No candidates found</p>
+                        <button class="btn btn-primary" onclick="document.getElementById('createCandidateBtn').click()">
+                            Add Your First Candidate
+                        </button>
+                    </div>
+                    <div id="loadingState" class="loading-state">
+                        <i class="fas fa-spinner fa-spin fa-2x"></i>
+                        <p>Loading candidates...</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Create/Edit Candidate Modal -->
+    <div id="candidateModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add Candidate</h2>
+                <button class="modal-close" onclick="closeCandidateModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="candidateForm">
+                <input type="hidden" id="candidateId">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="candidateName">Full Name *</label>
+                        <input type="text" id="candidateName" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="candidateEmail">Email *</label>
+                        <input type="email" id="candidateEmail" required placeholder="john@example.com">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="candidatePhone">Phone</label>
+                        <input type="tel" id="candidatePhone" placeholder="+1 234 567 8900">
+                    </div>
+                    <div class="form-group">
+                        <label for="candidateExperience">Years of Experience</label>
+                        <input type="number" id="candidateExperience" min="0" max="50" placeholder="5">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="candidateCompany">Current Company</label>
+                        <input type="text" id="candidateCompany" placeholder="Tech Corp Inc.">
+                    </div>
+                    <div class="form-group">
+                        <label for="candidatePosition">Current Position</label>
+                        <input type="text" id="candidatePosition" placeholder="Senior Developer">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="candidateLinkedIn">LinkedIn URL</label>
+                    <input type="url" id="candidateLinkedIn" placeholder="https://linkedin.com/in/...">
+                </div>
+
+                <div class="form-group">
+                    <label for="candidateSkills">Skills</label>
+                    <textarea id="candidateSkills" rows="3" placeholder="e.g., Python, JavaScript, React, Node.js, Docker"></textarea>
+                    <small style="color: var(--gray-600);">Separate skills with commas</small>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline" onclick="closeCandidateModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> <span id="submitBtnText">Add Candidate</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/static/js/toast.js"></script>
+    <script src="/static/js/candidates.js"></script>
+</body>
+</html>

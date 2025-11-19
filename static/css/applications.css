@@ -1,0 +1,168 @@
+/* Applications Pipeline Styles */
+.pipeline-container {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    min-height: 600px;
+}
+
+.pipeline-column {
+    flex: 1;
+    min-width: 280px;
+    background: var(--gray-50);
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+}
+
+.pipeline-header {
+    padding: 1rem;
+    border-bottom: 2px solid var(--gray-200);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--white);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.pipeline-header h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--gray-700);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pipeline-header.success h3 {
+    color: var(--success-color);
+}
+
+.pipeline-header.rejected h3 {
+    color: var(--danger-color);
+}
+
+.count-badge {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 0.25rem 0.625rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.pipeline-cards {
+    padding: 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    overflow-y: auto;
+    max-height: calc(100vh - 300px);
+}
+
+.application-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: var(--transition);
+    border-left: 3px solid var(--primary-color);
+}
+
+.application-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow-lg);
+}
+
+.application-card .candidate-name {
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+}
+
+.application-card .job-title {
+    color: var(--gray-600);
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.application-card .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--gray-200);
+}
+
+.application-card .actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.application-card .actions button {
+    flex: 1;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.application-card .btn-update {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.application-card .btn-update:hover {
+    background: var(--primary-dark);
+}
+
+.empty-pipeline {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--gray-500);
+    font-size: 0.875rem;
+}
+
+.empty-pipeline i {
+    font-size: 2rem;
+    color: var(--gray-300);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .pipeline-container {
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+    }
+    
+    .pipeline-column {
+        min-width: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .pipeline-container {
+        flex-direction: column;
+    }
+    
+    .pipeline-column {
+        min-width: 100%;
+    }
+    
+    .pipeline-cards {
+        max-height: 400px;
+    }
+}

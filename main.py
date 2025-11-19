@@ -105,6 +105,45 @@ async def dashboard(request: Request):
         {"request": request, "user": user}
     )
 
+@app.get("/jobs", response_class=HTMLResponse)
+async def jobs_page(request: Request):
+    """Jobs management page - requires authentication"""
+    user = request.session.get('user')
+    if not user:
+        return RedirectResponse(url='/')
+    return templates.TemplateResponse(
+        "jobs.html",
+        {"request": request, "user": user}
+    )
+
+@app.get("/candidates", response_class=HTMLResponse)
+async def candidates_page(request: Request):
+    """Candidates management page - requires authentication"""
+    user = request.session.get('user')
+    if not user:
+        return RedirectResponse(url='/')
+    return templates.TemplateResponse(
+        "candidates.html",
+        {"request": request, "user": user}
+    )
+
+@app.get("/applications", response_class=HTMLResponse)
+async def applications_page(request: Request):
+    """Applications tracking page - requires authentication"""
+    user = request.session.get('user')
+    if not user:
+        return RedirectResponse(url='/')
+    return templates.TemplateResponse(
+        "applications.html",
+        {"request": request, "user": user}
+    )
+    if not user:
+        return RedirectResponse(url='/')
+    return templates.TemplateResponse(
+        "dashboard.html",
+        {"request": request, "user": user}
+    )
+
 @app.get("/auth/login")
 async def login(request: Request):
     """Initiate Google OAuth login"""

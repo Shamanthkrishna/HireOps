@@ -320,6 +320,8 @@
     transition: var(--transition);
     color: var(--gray-700);
     font-weight: 500;
+    text-decoration: none;
+    text-align: center;
 }
 
 .action-btn:hover {

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applications - HireOps</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <link rel="stylesheet" href="/static/css/jobs.css">
+    <link rel="stylesheet" href="/static/css/applications.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="/static/js/theme.js"></script>
+</head>
+<body class="dashboard-body">
+    <!-- Top Navigation -->
+    <nav class="dashboard-navbar">
+        <div class="navbar-content">
+            <div class="logo">
+                <i class="fas fa-briefcase"></i>
+                <span>HireOps</span>
+            </div>
+            <div class="navbar-right">
+                <div class="user-menu">
+                    <img src="{{ user.picture }}" alt="{{ user.name }}" class="user-avatar">
+                    <span class="user-name">{{ user.name }}</span>
+                    <div class="user-dropdown">
+                        <a href="#"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="/auth/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="/dashboard" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Overview</span>
+                </a>
+                <a href="/jobs" class="nav-item">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Jobs</span>
+                </a>
+                <a href="/candidates" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Candidates</span>
+                </a>
+                <a href="/applications" class="nav-item active">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Applications</span>
+                </a>
+                <a href="#analytics" class="nav-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="#settings" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <div class="page-header">
+                <div>
+                    <h1>Application Pipeline</h1>
+                    <p class="subtitle">Track candidates through your hiring process</p>
+                </div>
+                <button class="btn btn-primary" id="createApplicationBtn">
+                    <i class="fas fa-plus"></i> New Application
+                </button>
+            </div>
+
+            <!-- Pipeline View -->
+            <div id="pipelineView" class="pipeline-container">
+                <div class="pipeline-column" data-status="applied">
+                    <div class="pipeline-header">
+                        <h3><i class="fas fa-inbox"></i> Applied</h3>
+                        <span class="count-badge" id="count-applied">0</span>
+                    </div>
+                    <div class="pipeline-cards" id="cards-applied"></div>
+                </div>
+
+                <div class="pipeline-column" data-status="screening">
+                    <div class="pipeline-header">
+                        <h3><i class="fas fa-search"></i> Screening</h3>
+                        <span class="count-badge" id="count-screening">0</span>
+                    </div>
+                    <div class="pipeline-cards" id="cards-screening"></div>
+                </div>
+
+                <div class="pipeline-column" data-status="interview">
+                    <div class="pipeline-header">
+                        <h3><i class="fas fa-comments"></i> Interview</h3>
+                        <span class="count-badge" id="count-interview">0</span>
+                    </div>
+                    <div class="pipeline-cards" id="cards-interview"></div>
+                </div>
+
+                <div class="pipeline-column" data-status="offer">
+                    <div class="pipeline-header">
+                        <h3><i class="fas fa-handshake"></i> Offer</h3>
+                        <span class="count-badge" id="count-offer">0</span>
+                    </div>
+                    <div class="pipeline-cards" id="cards-offer"></div>
+                </div>
+
+                <div class="pipeline-column" data-status="hired">
+                    <div class="pipeline-header success">
+                        <h3><i class="fas fa-check-circle"></i> Hired</h3>
+                        <span class="count-badge" id="count-hired">0</span>
+                    </div>
+                    <div class="pipeline-cards" id="cards-hired"></div>
+                </div>
+
+                <div class="pipeline-column" data-status="rejected">
+                    <div class="pipeline-header rejected">
+                        <h3><i class="fas fa-times-circle"></i> Rejected</h3>
+                        <span class="count-badge" id="count-rejected">0</span>
+                    </div>
+                    <div class="pipeline-cards" id="cards-rejected"></div>
+                </div>
+            </div>
+
+            <div id="loadingState" class="loading-state">
+                <i class="fas fa-spinner fa-spin fa-2x"></i>
+                <p>Loading applications...</p>
+            </div>
+
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <i class="fas fa-clipboard-list fa-3x"></i>
+                <p>No applications yet</p>
+                <button class="btn btn-primary" onclick="document.getElementById('createApplicationBtn').click()">
+                    Create First Application
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Create Application Modal -->
+    <div id="applicationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>New Application</h2>
+                <button class="modal-close" onclick="closeApplicationModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="applicationForm">
+                <div class="form-group">
+                    <label for="applicationJob">Job Position *</label>
+                    <select id="applicationJob" required>
+                        <option value="">Select a job...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="applicationCandidate">Candidate *</label>
+                    <select id="applicationCandidate" required>
+                        <option value="">Select a candidate...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="applicationNotes">Notes</label>
+                    <textarea id="applicationNotes" rows="4" placeholder="Add any relevant notes about this application..."></textarea>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline" onclick="closeApplicationModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Create Application
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Update Status Modal -->
+    <div id="statusModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Update Application Status</h2>
+                <button class="modal-close" onclick="closeStatusModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="statusForm">
+                <input type="hidden" id="statusApplicationId">
+                
+                <div class="form-group">
+                    <label>Candidate</label>
+                    <p id="statusCandidateName" style="font-weight: 600; color: var(--gray-900);"></p>
+                </div>
+
+                <div class="form-group">
+                    <label>Job</label>
+                    <p id="statusJobTitle" style="font-weight: 600; color: var(--gray-900);"></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="newStatus">New Status *</label>
+                    <select id="newStatus" required>
+                        <option value="applied">Applied</option>
+                        <option value="screening">Screening</option>
+                        <option value="interview">Interview</option>
+                        <option value="offer">Offer</option>
+                        <option value="hired">Hired</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="statusNotes">Notes</label>
+                    <textarea id="statusNotes" rows="3" placeholder="Add notes about this status change..."></textarea>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline" onclick="closeStatusModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-check"></i> Update Status
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/static/js/toast.js"></script>
+    <script src="/static/js/applications.js"></script>
+</body>
+</html>

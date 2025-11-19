@@ -5,33 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initializeDashboard() {
-    // Sidebar navigation
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => {
-        item.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Remove active class from all items
-            navItems.forEach(nav => nav.classList.remove('active'));
-            
-            // Add active class to clicked item
-            this.classList.add('active');
-            
-            // Show corresponding section (placeholder for now)
-            const section = this.getAttribute('href').substring(1);
-            showSection(section);
-        });
-    });
-    
-    // Quick action buttons
-    const actionButtons = document.querySelectorAll('.action-btn');
-    actionButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const action = this.querySelector('span').textContent;
-            showPlaceholderMessage(action);
-        });
-    });
-    
     // Mobile menu toggle
     setupMobileMenu();
 }

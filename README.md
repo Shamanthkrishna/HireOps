@@ -182,6 +182,14 @@ HireOps/
 | GET | `/auth/logout` | Logout user | No |
 | GET | `/api/user` | Get current user info | Yes |
 
+## 🚀 Deployment
+
+This project is configured for easy deployment on **Render.com** (free tier available).
+
+See **[Docs/DEPLOY_NOW.md](Docs/DEPLOY_NOW.md)** for quick 5-minute deployment guide.
+
+For detailed deployment instructions, see **[Docs/DEPLOYMENT.md](Docs/DEPLOYMENT.md)**.
+
 ## 🚧 Coming in Phase 2
 
 - Job posting management (CRUD)
@@ -190,6 +198,14 @@ HireOps/
 - Database integration (SQLAlchemy)
 - Advanced pipeline visualization
 - Real-time collaboration features
+
+## 📚 Documentation
+
+- **[Docs/DEPLOY_NOW.md](Docs/DEPLOY_NOW.md)** - Quick deployment guide (5 minutes)
+- **[Docs/DEPLOYMENT.md](Docs/DEPLOYMENT.md)** - Detailed deployment instructions
+- **[Docs/GETTING_STARTED.md](Docs/GETTING_STARTED.md)** - Complete setup guide
+- **[Docs/QUICKSTART.md](Docs/QUICKSTART.md)** - Quick reference
+- **[Docs/PHASE1_COMPLETE.md](Docs/PHASE1_COMPLETE.md)** - Phase 1 completion summary
 
 ## 🐛 Troubleshooting
 

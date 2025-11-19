@@ -1,6 +1,6 @@
-# Deployment Guide - Free Hosting Options
+# Deployment Guide - Render.com (Free Hosting)
 
-## 🚀 Option 1: Render (RECOMMENDED - Easiest)
+## 🚀 Deploying to Render
 
 **Why Render?**
 - ✅ Completely FREE tier
@@ -74,55 +74,6 @@ Every time you push to GitHub, Render will automatically redeploy! 🎉
 
 ---
 
-## 🚀 Option 2: Railway
-
-**Why Railway?**
-- ✅ $5 free credit per month
-- ✅ Very simple setup
-- ✅ Great for small apps
-
-### Railway Deployment Steps
-
-1. **Sign Up**: https://railway.app/
-2. **New Project** → **"Deploy from GitHub repo"**
-3. **Select**: HireOps repository
-4. **Add Variables**: Same as Render (in Variables tab)
-5. **Generate Domain**: Click "Generate Domain" for public URL
-6. **Update Google OAuth**: Add Railway URL to allowed redirects
-
----
-
-## 🚀 Option 3: Fly.io
-
-**Why Fly.io?**
-- ✅ Free tier for small apps
-- ✅ Global deployment
-- ✅ Good performance
-
-### Fly.io Deployment
-
-```powershell
-# Install Fly CLI
-iwr https://fly.io/install.ps1 -useb | iex
-
-# Login
-fly auth login
-
-# Deploy
-fly launch --name hireops
-
-# Set environment variables
-fly secrets set SECRET_KEY=your-secret-key
-fly secrets set GOOGLE_CLIENT_ID=your-client-id
-fly secrets set GOOGLE_CLIENT_SECRET=your-client-secret
-fly secrets set GOOGLE_REDIRECT_URI=https://hireops.fly.dev/auth/callback
-
-# Deploy
-fly deploy
-```
-
----
-
 ## 📱 Share with Your Client
 
 After deploying on Render (recommended), share:
@@ -168,7 +119,7 @@ You need to update Google Cloud Console:
 
 ---
 
-## 🎯 Recommended Setup for Client Demo
+## 🎯 Deployment Setup Summary
 
 **Best Choice**: **Render** (no credit card, always free)
 

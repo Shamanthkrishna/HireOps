@@ -1,3 +1,6 @@
+# Render.com Deployment Configuration
+# This file enables one-click deployment to Render
+
 services:
   - type: web
     name: hireops
@@ -19,8 +22,6 @@ services:
         sync: false
       - key: HOST
         value: 0.0.0.0
-      - key: PORT
-        value: 10000
       - key: APP_NAME
         value: HireOps
       - key: ENVIRONMENT

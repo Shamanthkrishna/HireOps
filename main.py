@@ -75,7 +75,15 @@ async def login(request: Request):
     # Always use the actual request URL to construct redirect_uri
     # This ensures it works in both local dev and production
     redirect_uri = f"{request.url.scheme}://{request.url.netloc}/auth/callback"
-    print(f"OAuth redirect URI: {redirect_uri}")  # Debug log
+    
+    # Detailed debug logging
+    print("=" * 50)
+    print(f"Login initiated from: {request.url}")
+    print(f"Scheme: {request.url.scheme}")
+    print(f"Netloc: {request.url.netloc}")
+    print(f"Constructed redirect_uri: {redirect_uri}")
+    print("=" * 50)
+    
     return await oauth.google.authorize_redirect(request, redirect_uri)
 
 @app.get("/auth/callback")
@@ -123,6 +131,20 @@ async def debug_session(request: Request):
         "has_session": bool(request.session),
         "session_data": dict(request.session) if request.session else {},
         "has_user": 'user' in request.session
+    }
+
+@app.get("/api/debug/oauth")
+async def debug_oauth(request: Request):
+    """Debug OAuth configuration"""
+    redirect_uri = f"{request.url.scheme}://{request.url.netloc}/auth/callback"
+    return {
+        "current_url": str(request.url),
+        "scheme": request.url.scheme,
+        "netloc": request.url.netloc,
+        "constructed_redirect_uri": redirect_uri,
+        "google_client_id": os.getenv('GOOGLE_CLIENT_ID')[:10] + "..." if os.getenv('GOOGLE_CLIENT_ID') else None,
+        "env_redirect_uri": os.getenv('GOOGLE_REDIRECT_URI'),
+        "message": "The 'constructed_redirect_uri' above is what will be sent to Google. Make sure this EXACTLY matches what's in Google Cloud Console."
     }
 
 if __name__ == "__main__":

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HireOps - Advanced Recruitment Management Platform</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <i class="fas fa-briefcase"></i>
+                    <span>HireOps</span>
+                </div>
+                <div class="nav-links">
+                    {% if user %}
+                    <a href="/dashboard" class="btn btn-primary">Dashboard</a>
+                    <a href="/auth/logout" class="btn btn-outline">Logout</a>
+                    {% else %}
+                    <a href="#features">Features</a>
+                    <a href="#about">About</a>
+                    <a href="/auth/login" class="btn btn-primary">
+                        <i class="fab fa-google"></i> Sign in with Google
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Transform Your Hiring Process</h1>
+                <p class="hero-subtitle">
+                    Advanced recruitment tracking system that streamlines your hiring workflow with modern web technologies
+                </p>
+                <div class="hero-buttons">
+                    {% if user %}
+                    <a href="/dashboard" class="btn btn-primary btn-lg">
+                        Go to Dashboard
+                    </a>
+                    {% else %}
+                    <a href="/auth/login" class="btn btn-primary btn-lg">
+                        <i class="fab fa-google"></i> Get Started with Google
+                    </a>
+                    {% endif %}
+                    <a href="#features" class="btn btn-outline btn-lg">Learn More</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Companies</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">10K+</div>
+                        <div class="stat-label">Applications</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Powerful Features</h2>
+                <p>Everything you need to manage your recruitment pipeline</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-columns"></i>
+                    </div>
+                    <h3>Visual Pipeline</h3>
+                    <p>Kanban-style drag & drop interface for intuitive application tracking</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Team Collaboration</h3>
+                    <p>Real-time comments, task management, and activity tracking</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Advanced Analytics</h3>
+                    <p>Comprehensive insights with interactive charts and reports</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Security & Compliance</h3>
+                    <p>Enterprise-grade security with role-based access control</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Ready</h3>
+                    <p>Fully responsive design optimized for all devices</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Smart Automation</h3>
+                    <p>Intelligent candidate matching and workflow automation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About HireOps</h2>
+                    <p>
+                        HireOps is a state-of-the-art recruitment tracking system designed to transform 
+                        hiring workflows with modern web technologies. Built with FastAPI and advanced 
+                        JavaScript, it delivers enterprise-grade features for teams of all sizes.
+                    </p>
+                    <p>
+                        Replace fragmented spreadsheets with a centralized platform that tracks 
+                        requirements, manages candidates, and provides actionable insights through 
+                        comprehensive analytics.
+                    </p>
+                    <div class="tech-stack">
+                        <h3>Built With</h3>
+                        <div class="tech-badges">
+                            <span class="badge">FastAPI</span>
+                            <span class="badge">JavaScript</span>
+                            <span class="badge">Chart.js</span>
+                            <span class="badge">SQLAlchemy</span>
+                            <span class="badge">Google OAuth</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="dashboard-preview">
+                        <i class="fas fa-chart-pie fa-5x"></i>
+                        <p>Dashboard Preview</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-briefcase"></i> HireOps</h3>
+                    <p>Advanced Recruitment Management Platform</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#">Pricing (Coming Soon)</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">Documentation (Coming Soon)</a></li>
+                        <li><a href="#">Support (Coming Soon)</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 HireOps. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

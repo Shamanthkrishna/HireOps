@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - HireOps</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <!-- Top Navigation -->
+    <nav class="dashboard-navbar">
+        <div class="navbar-content">
+            <div class="logo">
+                <i class="fas fa-briefcase"></i>
+                <span>HireOps</span>
+            </div>
+            <div class="navbar-right">
+                <div class="user-menu">
+                    <img src="{{ user.picture }}" alt="{{ user.name }}" class="user-avatar">
+                    <span class="user-name">{{ user.name }}</span>
+                    <div class="user-dropdown">
+                        <a href="#"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="/auth/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Dashboard Layout -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="#overview" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Overview</span>
+                </a>
+                <a href="#jobs" class="nav-item">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Jobs</span>
+                </a>
+                <a href="#candidates" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Candidates</span>
+                </a>
+                <a href="#pipeline" class="nav-item">
+                    <i class="fas fa-columns"></i>
+                    <span>Pipeline</span>
+                </a>
+                <a href="#analytics" class="nav-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="#calendar" class="nav-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>Calendar</span>
+                </a>
+                <a href="#settings" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Welcome Header -->
+            <div class="dashboard-header">
+                <div>
+                    <h1>Welcome back, {{ user.name.split()[0] }}!</h1>
+                    <p class="subtitle">Here's what's happening with your recruitment pipeline</p>
+                </div>
+                <button class="btn btn-primary">
+                    <i class="fas fa-plus"></i> New Application
+                </button>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="stat-details">
+                        <h3>Active Jobs</h3>
+                        <p class="stat-number">12</p>
+                        <span class="stat-change positive">+2 this week</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-details">
+                        <h3>Total Candidates</h3>
+                        <p class="stat-number">248</p>
+                        <span class="stat-change positive">+15 this week</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="stat-details">
+                        <h3>Applications</h3>
+                        <p class="stat-number">89</p>
+                        <span class="stat-change positive">+8 this week</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-details">
+                        <h3>Offers</h3>
+                        <p class="stat-number">23</p>
+                        <span class="stat-change positive">+5 this week</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="content-grid">
+                <!-- Recent Applications -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2>Recent Applications</h2>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="card-content">
+                        <div class="placeholder-content">
+                            <i class="fas fa-file-alt fa-3x"></i>
+                            <p>Application tracking will appear here</p>
+                            <small>Feature coming soon in Phase 2</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pipeline Overview -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2>Pipeline Overview</h2>
+                        <a href="#" class="view-all">View Details</a>
+                    </div>
+                    <div class="card-content">
+                        <div class="placeholder-content">
+                            <i class="fas fa-columns fa-3x"></i>
+                            <p>Pipeline visualization will appear here</p>
+                            <small>Kanban board coming soon</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="content-card quick-actions">
+                    <div class="card-header">
+                        <h2>Quick Actions</h2>
+                    </div>
+                    <div class="card-content">
+                        <button class="action-btn">
+                            <i class="fas fa-plus-circle"></i>
+                            <span>Add New Job</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Add Candidate</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-calendar-plus"></i>
+                            <span>Schedule Interview</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-chart-line"></i>
+                            <span>View Analytics</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Upcoming Interviews -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2>Upcoming Interviews</h2>
+                        <a href="#" class="view-all">View Calendar</a>
+                    </div>
+                    <div class="card-content">
+                        <div class="placeholder-content">
+                            <i class="fas fa-calendar-alt fa-3x"></i>
+                            <p>Interview schedule will appear here</p>
+                            <small>Calendar integration coming soon</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>
